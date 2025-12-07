@@ -6,35 +6,41 @@
   <title>ساعد في زواج أحمد فتوح</title>
   <meta name="description" content="حملة تبرع لزواج أحمد فتوح — ساهم لتدخل الفرحة في الشتاء" />
   <style>
-    /* ========== Variables & Reset ========== */
+    /* ========== PRO-DESIGN VARIABLES & RESET (ARABIC) ========== */
     :root{
-      --bg1: #f6fbff;
-      --bg2: #f1fff6;
-      --primary-deep:#0b63ff;
-      --primary-teal:#00b58c;
-      --accent-grad: linear-gradient(90deg,var(--primary-deep),var(--primary-teal));
-      --muted:#6b7480;
-      --card-radius:16px;
-      --safe-bottom:92px; /* safe space so donate pill doesn't cover form */
-      --glass: rgba(255,255,255,0.7);
+      /* New Colors for Professional Look: Deep Blue/Navy with Vibrant Teal/Gold Accent */
+      --color-primary-deep: #1A374D; /* Deep Navy Blue */
+      --color-accent-vibrant: #4DCCBD; /* Soft Vibrant Teal */
+      --color-text-dark: #0F1D2C; /* Dark, authoritative text */
+      --color-text-muted: #627C8F; /* Softer text */
+      --color-background-light: #F7F9FB; /* Very light background */
+      --color-background-subtle: #E8F0F5; /* Subtle secondary background */
+      --gradient-main: linear-gradient(135deg, var(--color-primary-deep), #2A5A7A); /* Rich, deep gradient */
+      --gradient-accent: linear-gradient(90deg, #4DB9CC, #4DCCBD); /* Vibrant accent gradient */
+      
+      --card-radius: 20px;
+      --safe-bottom: 92px;
+      --glass: rgba(255,255,255,0.85);
     }
 
+    /* Reset and Base Styles */
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
       direction: rtl;
-      font-family: "Inter","Segoe UI",Tahoma,Arial,sans-serif;
+      font-family: "Almarai", "Inter", "Segoe UI", Tahoma, Arial, sans-serif; /* Added Almarai/similar for Arabic aesthetic */
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       background:
-        radial-gradient(600px 240px at 10% 10%, rgba(11,99,255,0.05), transparent 16%),
-        radial-gradient(420px 200px at 92% 88%, rgba(0,181,140,0.04), transparent 18%),
-        linear-gradient(180deg,var(--bg1),var(--bg2));
-      color:#041124;
+        radial-gradient(900px 300px at 10% 10%, rgba(26,55,77,0.06), transparent 20%),
+        radial-gradient(600px 240px at 90% 88%, rgba(77,204,189,0.05), transparent 20%),
+        linear-gradient(180deg, var(--color-background-light), var(--color-background-subtle));
+      color:var(--color-text-dark);
       padding:12px;
+      line-height: 1.6;
     }
 
-    /* Respect reduced motion preference */
+    /* Animation preference respect */
     @media (prefers-reduced-motion: reduce) {
       *{transition:none!important;animation:none!important}
     }
@@ -42,71 +48,215 @@
     /* Page container */
     .page{max-width:920px;margin:0 auto;padding-bottom:var(--safe-bottom)}
 
-    /* ===== Hero (image) ===== */
-    .hero-wrap{border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(6,18,34,0.06);background:var(--glass);margin-bottom:14px}
+    /* ===== Hero (image) - Enhanced Visuals ===== */
+    .hero-wrap{
+      border-radius: var(--card-radius);
+      overflow:hidden;
+      box-shadow: 0 25px 70px rgba(15,29,44,0.12); /* Deeper shadow */
+      background:var(--glass);
+      margin-bottom:18px;
+    }
     .hero{
-      position:relative;height:360px;overflow:hidden;
+      position:relative;height:380px;overflow:hidden;
     }
-    .hero img{width:100%;height:100%;object-fit:cover;display:block;border-radius:12px;transform:scale(1.02);transition:transform .9s cubic-bezier(.2,.9,.2,1)}
-    .frame{position:absolute;left:12px;top:12px;width:86px;height:86px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,0.85);box-shadow:0 10px 30px rgba(2,8,20,0.12)}
+    .hero img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      border-radius: 14px; /* Slightly smaller radius inside wrap */
+      transform:scale(1.02);
+      transition:transform 1.2s cubic-bezier(.2,.9,.2,1); /* Slower, smoother transition */
+    }
+    .frame{
+      position:absolute;left:18px;top:18px;width:90px;height:90px;
+      border-radius:14px;overflow:hidden;
+      border:3px solid rgba(255,255,255,0.9); /* Thicker, whiter border */
+      box-shadow:0 12px 36px rgba(15,29,44,0.2);
+    }
     .frame img{width:100%;height:100%;object-fit:cover;display:block}
-    .thumbs{display:flex;gap:12px;padding:12px;background:transparent;justify-content:center}
-    .thumbs img{width:46%;height:78px;border-radius:12px;object-fit:cover;border:3px solid #fff;cursor:pointer;box-shadow:0 8px 26px rgba(2,8,20,0.06);transition:transform .18s}
-    .thumbs img.active{transform:translateY(-6px) scale(1.02);box-shadow:0 14px 40px rgba(2,8,20,0.10)}
-    .caption{text-align:center;color:var(--muted);font-size:13px;padding:8px 10px}
-
-    /* ===== Main card (content) ===== */
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.96));
-      border-radius:18px;padding:16px;box-shadow:0 16px 48px rgba(6,18,34,0.05);
+    .thumbs{display:flex;gap:14px;padding:14px;background:transparent;justify-content:center}
+    .thumbs img{
+      width:46%;height:84px;border-radius:14px;object-fit:cover;
+      border:4px solid #fff; /* Thicker white border */
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(15,29,44,0.08);
+      transition:transform .2s,box-shadow .2s, border-color .2s;
     }
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
-    header h1{font-size:20px;font-weight:800}
-    .lang-btn{background:#fff;border:1px solid #e9eef4;padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700;box-shadow:0 6px 18px rgba(2,8,20,0.03)}
-    .lead h2{font-size:18px;line-height:1.35;margin-bottom:8px}
-    .lead p{color:var(--muted);line-height:1.6;white-space:pre-wrap}
+    .thumbs img.active{
+      transform:translateY(-8px) scale(1.03);
+      box-shadow:0 18px 48px rgba(15,29,44,0.15);
+      border-color: var(--color-accent-vibrant); /* Highlight active thumb */
+    }
+    .caption{text-align:center;color:var(--color-text-muted);font-size:13px;padding:8px 10px}
+
+    /* ===== Main card (content) - Elevated Look ===== */
+    .card{
+      background:linear-gradient(180deg, #FFFFFF, #FDFDFD);
+      border-radius:var(--card-radius);
+      padding:20px;
+      box-shadow:0 20px 50px rgba(15,29,44,0.08); /* Stronger card shadow */
+    }
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+    header h1{font-size:24px;font-weight:900;color:var(--color-primary-deep)} /* Prominent Title */
+    .lang-btn{
+      background:#fff;
+      border:1px solid var(--color-background-subtle);
+      padding:8px 14px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:700;
+      box-shadow:0 8px 20px rgba(15,29,44,0.04);
+      color:var(--color-text-dark);
+      transition: background .2s;
+    }
+    .lang-btn:hover{background:var(--color-background-subtle)}
+    .lead h2{font-size:19px;line-height:1.4;margin-bottom:10px;font-weight:700}
+    .lead p{color:var(--color-text-muted);line-height:1.7;white-space:pre-wrap;font-size:15px}
 
     /* methods: horizontal scroll on mobile */
-    .methods{display:flex;gap:10px;overflow-x:auto;padding:8px 0;-webkit-overflow-scrolling:touch}
-    .method{min-width:110px;flex:0 0 auto;background:#fff;border-radius:12px;padding:10px 12px;border:1px solid rgba(2,8,20,0.04);display:flex;align-items:center;gap:10px;justify-content:center;cursor:pointer;transition:transform .12s,box-shadow .12s}
-    .method:active{transform:scale(.985)}
-    .method img{width:34px;height:34px;object-fit:contain}
+    .methods{display:flex;gap:12px;overflow-x:auto;padding:10px 0;-webkit-overflow-scrolling:touch}
+    .method{
+      min-width:120px;flex:0 0 auto;
+      background:#fff;
+      border-radius:14px;
+      padding:12px 14px;
+      border:1px solid var(--color-background-subtle);
+      display:flex;align-items:center;gap:10px;justify-content:center;
+      cursor:pointer;
+      transition:transform .12s,box-shadow .12s, background .12s;
+      font-weight: 600;
+      color: var(--color-primary-deep);
+    }
+    .method:hover{background:var(--color-background-subtle)}
+    .method:active{transform:scale(.97)}
+    .method img{width:36px;height:36px;object-fit:contain}
 
     /* about & contact */
-    .section-title{font-size:16px;margin:6px 0 8px}
-    .about p{color:var(--muted);line-height:1.6}
-    .contact form{display:flex;flex-direction:column;gap:12px;margin-top:6px}
-    .field{width:100%;padding:12px;border-radius:12px;border:1px solid #eef4fa;background:#fff;font-size:15px;color:#051426;box-shadow: inset 0 1px 0 rgba(0,0,0,0.02)}
-    textarea.field{min-height:110px;resize:vertical}
-    .btn-send{padding:14px;border-radius:12px;border:none;background:var(--accent-grad);color:#fff;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 16px 40px rgba(11,99,255,0.10)}
+    .section-title{font-size:18px;margin:16px 0 10px;font-weight:800;color:var(--color-primary-deep)}
+    .about p{color:var(--color-text-muted);line-height:1.7;font-size:15px}
+    .contact form{display:flex;flex-direction:column;gap:14px;margin-top:10px}
+    .field{
+      width:100%;padding:14px;
+      border-radius:14px;
+      border:1px solid #E0E7ED;
+      background:#fff;
+      font-size:16px;
+      color:var(--color-text-dark);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field:focus{border-color:var(--color-accent-vibrant);box-shadow: inset 0 2px 4px rgba(0,0,0,0.05), 0 0 0 3px rgba(77,204,189,0.2)}
+    textarea.field{min-height:120px;resize:vertical}
+    .btn-send{
+      padding:16px;
+      border-radius:14px;
+      border:none;
+      background:var(--gradient-main); /* Use main gradient for authority */
+      color:#fff;
+      font-weight:800;
+      font-size:17px;
+      cursor:pointer;
+      box-shadow:0 18px 45px rgba(26,55,77,0.15);
+      transition: transform .15s, opacity .15s;
+    }
+    .btn-send:active{transform:translateY(1px)}
 
-    footer{font-size:13px;color:var(--muted);text-align:center;padding-top:8px}
+    footer{font-size:13px;color:var(--color-text-muted);text-align:center;padding-top:16px}
 
-    /* sticky donate pill */
+    /* sticky donate pill - Highly Visible */
     .donate-wrap{position:fixed;left:12px;right:12px;bottom:12px;z-index:240;display:flex;justify-content:center}
-    .donate-pill{max-width:920px;width:100%;background:linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.92));border-radius:999px;padding:10px 12px;display:flex;align-items:center;gap:12px;box-shadow:0 26px 80px rgba(6,18,34,0.08);backdrop-filter: blur(6px)}
-    .donate-text{font-weight:800;color:#042a3a}
-    .donate-btn{margin-left:auto;padding:10px 14px;border-radius:12px;border:none;background:var(--accent-grad);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 14px 36px rgba(11,99,255,0.12)}
+    .donate-pill{
+      max-width:920px;width:100%;
+      background:linear-gradient(90deg, rgba(255,255,255,0.98), rgba(255,255,255,0.95)); /* Very light, glossy background */
+      border-radius:999px;
+      padding:12px 16px;
+      display:flex;align-items:center;gap:14px;
+      box-shadow:0 30px 85px rgba(15,29,44,0.15); /* Stronger shadow */
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+    .donate-text{font-weight:900;color:var(--color-primary-deep);font-size:16px}
+    .donate-btn{
+      margin-left:auto;
+      padding:12px 18px;
+      border-radius:14px;
+      border:none;
+      background:var(--gradient-accent); /* Use vibrant accent gradient */
+      color:#fff;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 16px 40px rgba(77,204,189,0.25);
+      font-size:15px;
+      transition: transform .15s;
+    }
+    .donate-btn:active{transform:scale(.98)}
 
-    /* modal sheet */
-    .modal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;background:linear-gradient(rgba(0,0,0,0.18),rgba(0,0,0,0.42));z-index:300;padding:12px}
+    /* modal sheet - Clean and Focused */
+    .modal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;background:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.5));z-index:300;padding:12px}
     .modal.show{display:flex}
-    .sheet{width:100%;max-width:720px;background:#fff;border-radius:16px 16px 8px 8px;padding:16px;box-shadow:0 30px 80px rgba(0,0,0,0.32);transform:translateY(20px);opacity:0;animation:sheetUp .36s ease forwards}
+    .sheet{
+      width:100%;max-width:720px;
+      background:#fff;
+      border-radius:var(--card-radius) var(--card-radius) 10px 10px;
+      padding:20px;
+      box-shadow:0 40px 100px rgba(0,0,0,0.4);
+      transform:translateY(30px);opacity:0;
+      animation:sheetUp .4s cubic-bezier(.16,1,.3,1) forwards;
+    }
+    .modal-close{
+      position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;color:var(--color-text-muted);cursor:pointer;
+      padding: 6px;
+    }
     @keyframes sheetUp{to{transform:translateY(0);opacity:1}}
-    .sheet .note{background:#fff8e6;padding:12px;border-radius:10px;border-left:4px solid #f6a623;font-weight:700;text-align:center;color:#473012;margin:12px 0}
+    .sheet h3{font-size:22px;margin-bottom:10px;color:var(--color-primary-deep)}
+    .sheet p#chosen{font-size:16px;color:var(--color-text-dark);margin-bottom:15px;font-weight:600}
+    .sheet .note{
+      background:#fff0f0;
+      padding:14px;
+      border-radius:12px;
+      border-right:4px solid #cc4d4d; /* Red/warning color for note */
+      font-weight:700;
+      text-align:center;
+      color:#8a2f2f;
+      margin:15px 0;
+      line-height: 1.5;
+    }
+
+    /* Modal buttons */
+    .modal .method, .sheet button{
+      flex: 1;
+      font-size:16px;
+      padding:12px;
+      border-radius:10px;
+      font-weight:800;
+      cursor:pointer;
+      transition: transform .1s;
+    }
+    #cancelModal{
+      background:var(--color-background-subtle);
+      color:var(--color-text-dark);
+      border:1px solid #E0E7ED;
+    }
+    #proceed{
+      background:var(--color-accent-vibrant);
+      color:#fff;
+      border:none;
+      box-shadow:0 10px 25px rgba(77,204,189,0.2);
+    }
+    .modal button:active{transform:scale(.98)}
 
     /* small screen adjustments */
     @media (max-width:520px){
-      .hero img{height:300px}
-      .thumbs img{height:70px}
-      .card{border-radius:14px}
-      .sheet{padding:14px}
+      .hero{height:320px}
+      .thumbs img{height:76px}
+      .card{border-radius:16px}
+      .sheet{padding:18px}
+      .donate-text{font-size:15px}
+      header h1{font-size:22px}
     }
 
     /* desktop tweaks keep mobile-first */
     @media (min-width:980px){
-      body{padding:22px}
-      .page{display:flex;gap:20px;align-items:flex-start}
+      body{padding:28px}
+      .page{display:flex;gap:24px;align-items:flex-start}
       .hero-wrap{flex:0 0 420px}
       main.card{flex:1}
       .donate-wrap{right:28px;left:28px}
@@ -115,11 +265,9 @@
 </head>
 <body>
   <div class="page">
-    <!-- HERO area -->
     <div style="width:100%;max-width:920px;margin:0 auto">
       <div class="hero-wrap">
         <div class="hero" id="hero">
-          <!-- main image (the one you pointed to) -->
           <img id="mainImg" src="images/IMG-20251207-WA0037.jpg" alt="أحمد فتوح - الصورة المميزة">
           <div class="frame"><img id="frameImg" src="images/IMG-20251207-WA0036.jpg" alt="صورة مصغرة"></div>
         </div>
@@ -130,7 +278,6 @@
         <div class="caption">الصورة المميزة — اضغط على أي صورة لتكبيرها أو لتجربتها في الإطار.</div>
       </div>
 
-      <!-- MAIN CONTENT CARD -->
       <main class="card" aria-labelledby="mainTitle" style="margin-top:14px">
         <div style="padding:16px">
           <header>
@@ -166,13 +313,12 @@
             </form>
           </section>
 
-          <footer style="margin-top:10px;text-align:center;color:var(--muted);font-size:13px">كل الحقوق محفوظة © soc: ahmed hossny</footer>
+          <footer style="margin-top:10px;text-align:center;color:var(--color-text-muted);font-size:13px">كل الحقوق محفوظة © soc: ahmed hossny</footer>
         </div>
       </main>
     </div>
   </div>
 
-  <!-- DONATE PILL (sticky) -->
   <div class="donate-wrap" aria-hidden="false">
     <div class="donate-pill" role="region" aria-label="شريط التبرع">
       <div class="donate-text">ساعد الآن — كل جنيه بيعمل فرق</div>
@@ -180,7 +326,6 @@
     </div>
   </div>
 
-  <!-- MODAL sheet -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" id="closeModal" aria-label="إغلاق">×</button>
@@ -188,8 +333,8 @@
       <p id="chosen">-</p>
       <div class="note" id="specialNote">يخي انت قلبك سخن عايز تتبرع ع طول ع اساس لاقي تاكل شوفلة عروسة الاول🫠🌚</div>
       <div style="display:flex;gap:10px;justify-content:flex-end">
-        <button class="method" id="cancelModal" style="padding:10px 12px;border-radius:10px">غلق</button>
-        <button id="proceed" style="padding:10px 12px;border-radius:10px;background:var(--primary-teal);color:#fff;border:none;font-weight:800">تابع التبرع</button>
+        <button id="cancelModal">غلق</button>
+        <button id="proceed">تابع التبرع</button>
       </div>
     </div>
   </div>
@@ -216,8 +361,8 @@
           thumbs.forEach(x=>x.classList.remove('active'));
           this.classList.add('active');
           const src = this.dataset.src || this.src;
-          mainImg.style.transition = 'opacity .18s, transform .28s';
-          mainImg.style.opacity = '0.4';
+          mainImg.style.transition = 'opacity .2s, transform .3s';
+          mainImg.style.opacity = '0.3';
           mainImg.style.transform = 'scale(.98)';
           setTimeout(()=>{
             mainImg.src = src;
@@ -225,8 +370,8 @@
             mainImg.style.transform = 'scale(1.02)';
             frameImg.src = src;
             hero.classList.add('hero-zoom');
-            setTimeout(()=>hero.classList.remove('hero-zoom'),900);
-          }, 140);
+            setTimeout(()=>hero.classList.remove('hero-zoom'),1200); // Increased time for better feel
+          }, 180);
         });
       });
 
