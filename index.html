@@ -6,259 +6,280 @@
   <title>ساعد في زواج أحمد فتوح</title>
   <meta name="description" content="حملة تبرع لزواج أحمد فتوح — ساهم لتدخل الفرحة في الشتاء" />
   <style>
+    /* ============== Variables & Reset ============== */
     :root{
-      --accent: #00796b;       /* CTA (teal) */
-      --accent-2: #0b63ff;     /* secondary blue */
-      --muted: #667085;
-      --card-radius: 14px;
-      --donate-height: 64px;   /* ارتفاع شريط التبرع */
+      --bg-a: #eaf8ff;
+      --bg-b: #f0fff7;
+      --primary-1: #0b63ff;   /* deep blue */
+      --primary-2: #00b58c;   /* teal/green */
+      --accent: linear-gradient(90deg,var(--primary-1),var(--primary-2));
+      --muted: #617085;
+      --card-radius: 16px;
+      --safe-bottom: 88px; /* safe area so donate bar won't cover */
     }
-
-    /* Reset */
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-      /* ===== الخلفية المتحركة (اختيار 6) - animated gradient =====
-         محفوظة لتبدو رايقة على الموبايل؛ استعملت حجم خلفية كبير للحركة الناعمة */
-      background: linear-gradient(270deg,
-        rgba(11,99,255,0.12) 0%,
-        rgba(0,200,140,0.10) 25%,
-        rgba(11,99,255,0.08) 50%,
-        rgba(0,200,140,0.06) 75%,
-        rgba(11,99,255,0.04) 100%
-      );
-      background-size: 600% 600%;
-      animation: slowGradient 16s ease infinite;
-      color:#0f1724;
+      direction: rtl;
+      font-family: "Inter", "Segoe UI", Tahoma, Arial, sans-serif;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
+      background:
+        radial-gradient(600px 220px at 10% 10%, rgba(11,99,255,0.06), transparent 18%),
+        radial-gradient(480px 200px at 92% 88%, rgba(0,181,140,0.05), transparent 18%),
+        linear-gradient(180deg,var(--bg-a) 0%, var(--bg-b) 100%);
+      color:#041124;
       padding:12px;
-      direction: rtl;
     }
 
-    /* إذا المستخدم فعّل reduced motion نوقف الحركة لأداء أفضل */
-    @media (prefers-reduced-motion: reduce) {
-      body {
-        animation: none;
-        background-size: auto;
-      }
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none!important;animation:none!important}
     }
 
-    @keyframes slowGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* اجعل هناك حشوة أسفل تحمي الحقول من التغطية */
-    .page-wrap{max-width:920px;margin:0 auto;padding-bottom: calc(var(--donate-height) + 28px);}
-
-    /* Showcase */
-    .showcase{
-      border-radius:var(--card-radius);
+    /* ============== Layout ============== */
+    .wrap{max-width:920px;margin:0 auto;padding-bottom:var(--safe-bottom)}
+    .card{
+      background: rgba(255,255,255,0.95);
+      border-radius: var(--card-radius);
+      box-shadow: 0 20px 50px rgba(6,18,34,0.06);
       overflow:hidden;
-      background: rgba(255,255,255,0.6);
-      box-shadow:0 18px 40px rgba(8,20,36,0.06);
-      margin:12px 0;
+    }
+
+    /* ============== Hero / Showcase ============== */
+    .hero {
+      position:relative;
+      overflow:hidden;
+      border-radius:calc(var(--card-radius));
+      margin-bottom:12px;
+      box-shadow: 0 18px 40px rgba(6,18,34,0.04);
+    }
+    .hero .main-img{
+      width:100%;height:360px;object-fit:cover;display:block;
+      transition:transform .9s cubic-bezier(.2,.9,.2,1),filter .45s;
+      transform-origin:center center;
+      border-radius:14px;
+    }
+    .hero .frame{
+      position:absolute;left:14px;top:14px;width:84px;height:84px;border-radius:12px;overflow:hidden;
+      border:2px solid rgba(255,255,255,0.85);box-shadow:0 8px 28px rgba(2,8,20,0.12);
+    }
+    .thumbs{display:flex;gap:12px;padding:12px;background:rgba(255,255,255,0.65);justify-content:center}
+    .thumbs img{width:46%;height:84px;object-fit:cover;border-radius:12px;border:3px solid #fff;cursor:pointer;box-shadow:0 8px 24px rgba(2,8,20,0.06);transition:transform .18s,box-shadow .18s}
+    .thumbs img:active{transform:translateY(-6px)}
+    .thumbs img.active{transform:scale(1.02);box-shadow:0 14px 40px rgba(2,8,20,0.10);border-color:rgba(11,99,255,0.12)}
+
+    .caption{padding:12px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* ============== Content Card ============== */
+    .content{
+      padding:18px;
+      display:flex;flex-direction:column;gap:14px;
+    }
+    header{
+      display:flex;gap:12px;align-items:center;justify-content:space-between;
+    }
+    header h1{font-size:20px;font-weight:700}
+    .lang-btn{
+      background:#fff;border:1px solid #e6eef6;padding:8px 10px;border-radius:10px;cursor:pointer;font-weight:700;
+      box-shadow:0 6px 18px rgba(2,8,20,0.03)
+    }
+
+    .lead-text h2{font-size:18px;line-height:1.3;margin-bottom:6px}
+    .lead-text p{color:var(--muted);line-height:1.7;white-space:pre-wrap}
+
+    /* donate methods */
+    .methods{
+      display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;
+    }
+    .method{
+      background:#fff;border-radius:12px;padding:10px 14px;border:1px solid rgba(6,18,34,0.04);
+      min-width:110px;display:flex;align-items:center;gap:8px;justify-content:center;cursor:pointer;
+    }
+    .method img{width:34px;height:34px;object-fit:contain}
+
+    /* about + form */
+    .about h3,.contact h3{font-size:16px;margin-bottom:8px}
+    .about p{color:var(--muted);line-height:1.6}
+    .contact form{display:flex;flex-direction:column;gap:12px}
+    .input, textarea{
+      width:100%;padding:14px;border-radius:12px;border:1px solid #e8eef6;background:#fff;font-size:15px;color:#0b1b2b;
+      box-shadow: inset 0 1px 0 rgba(2,8,20,0.02);
+    }
+    textarea{min-height:110px;resize:vertical}
+    .btn-primary{
+      padding:14px;border-radius:12px;border:none;color:#fff;background:var(--accent);
+      font-weight:800;cursor:pointer;font-size:15px;box-shadow:0 14px 40px rgba(11,99,255,0.10);
+    }
+
+    /* ============== Sticky Donate Bar (compact and elegant) ============== */
+    .donate-sticky{
+      position:fixed;left:12px;right:12px;bottom:12px;z-index:240;display:flex;justify-content:center;
+    }
+    .donate-pill{
+      width:100%;max-width:880px;background:linear-gradient(90deg,rgba(255,255,255,0.95),rgba(250,255,255,0.95));
+      padding:10px;border-radius:999px;display:flex;align-items:center;gap:12px;box-shadow:0 22px 60px rgba(4,20,40,0.08);
       backdrop-filter: blur(6px);
     }
-    .hero{position:relative;height:320px;overflow:hidden}
-    .hero img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.9,.2,1),filter .6s}
-    .frame{position:absolute;left:12px;top:12px;width:88px;height:88px;border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,0.75);box-shadow:0 8px 28px rgba(0,0,0,0.12);transform:translateY(-8px)}
-    .thumbs{display:flex;gap:10px;padding:10px;justify-content:center}
-    .thumbs img{width:44%;height:78px;border-radius:12px;object-fit:cover;border:3px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,0.06);cursor:pointer;transition:transform .15s}
-    .thumbs img:active{transform:translateY(-4px)}
-    .caption{text-align:center;color:var(--muted);font-size:13px;padding:6px 8px}
-
-    /* Card */
-    .card{
-      background:rgba(255,255,255,0.98);
-      border-radius:var(--card-radius);
-      padding:14px;
-      box-shadow:0 14px 36px rgba(8,20,36,0.06);
-      backdrop-filter: blur(3px);
-      margin-bottom:18px;
-    }
-    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-    header h1{font-size:20px}
-    .lang-btn{border:1px solid #e6e9ee;background:#fff;padding:6px 10px;border-radius:8px;cursor:pointer}
-
-    .lead-text h2{font-size:18px;margin-bottom:8px}
-    .lead-text p{color:var(--muted);margin-bottom:12px;line-height:1.6;white-space:pre-wrap}
-
-    .methods{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
-    .method-btn{
-      display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(15,23,42,0.04);
-      background:#fff;cursor:pointer;flex:0 0 auto;min-width:110px;justify-content:center;transition:box-shadow .12s,transform .12s;
-    }
-    .method-btn:active{transform:scale(.98)}
-    .method-btn img{width:30px;height:30px;object-fit:contain}
-
-    .about{margin-top:12px;padding-top:12px;border-top:1px solid rgba(2,6,23,0.04)}
-    .about h3{font-size:16px;margin-bottom:6px}
-    .about p{color:var(--muted);line-height:1.6}
-
-    .contact{margin-top:12px;padding-top:12px;border-top:1px solid rgba(2,6,23,0.04)}
-    /* حقل النموذج الآن بعرض كامل عمودي (mobile focused) */
-    .contact form{display:flex;flex-direction:column;gap:10px;margin-top:8px}
-    .contact input,.contact textarea{
-      padding:12px;border-radius:12px;border:1px solid #eaeef3;background:#fff;font-size:15px;
-      box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
-    }
-    .contact textarea{min-height:96px;resize:vertical}
-    .btn-send{
-      padding:14px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:#fff;cursor:pointer;font-weight:800;font-size:15px;
-      box-shadow:0 10px 30px rgba(14,100,90,0.12);
-    }
-
-    footer{margin-top:12px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* Modal */
-    .modal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;background:linear-gradient(rgba(0,0,0,0.18),rgba(0,0,0,0.38));z-index:220;padding:12px}
-    .modal.show{display:flex}
-    .modal-card{
-      width:100%;max-width:680px;background:#fff;border-radius:14px 14px 6px 6px;padding:16px;box-shadow:0 30px 80px rgba(0,0,0,0.32);
-      transform:translateY(18px);opacity:0;animation:slideUp .36s ease forwards;overflow-wrap:break-word;word-break:break-word;white-space:normal;
-    }
-    @keyframes slideUp{ to { transform:translateY(0); opacity:1; } }
-    .modal-close{position:absolute;left:12px;top:10px;border:none;background:transparent;font-size:22px;cursor:pointer}
-    .special-msg{background:#fff7ed;border-left:4px solid #f59e0b;padding:12px;border-radius:8px;font-weight:700;text-align:center;margin:12px 0;line-height:1.6}
-
-    /* sticky donate bar - smaller and centered; translucent */
-    .donate-bar{
-      position:fixed;left:12px;right:12px;bottom:12px;z-index:240;display:flex;justify-content:center;pointer-events:auto;
-    }
-    .donate-inner{
-      width:100%;max-width:900px;height:var(--donate-height);
-      background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(250,255,255,0.85));
-      border-radius:999px;padding:8px 12px;display:flex;align-items:center;gap:10px;
-      box-shadow:0 18px 40px rgba(8,20,36,0.08);backdrop-filter: blur(6px);
-    }
-    .donate-title{font-weight:800;font-size:14px;color:#023047}
+    .donate-text{font-weight:800;color:#042a3a}
     .donate-cta{
-      margin-left:auto;padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent-2),var(--accent));
-      color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 30px rgba(11,99,255,0.12);
+      margin-left:auto;padding:10px 14px;border-radius:12px;border:none;background:var(--accent);
+      color:#fff;font-weight:800;cursor:pointer;box-shadow:0 12px 36px rgba(11,99,255,0.12)
     }
 
-    /* ensure form's last elements visible above donate bar on small screens */
-    @media (max-width:980px){
-      .page-wrap{padding-bottom: calc(var(--donate-height) + 36px);} /* extra breathing room */
-      .contact form .btn-send{margin-bottom:12px} /* extra space so button not flush with bottom */
+    /* ============== Modal ============== */
+    .modal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;background:linear-gradient(rgba(0,0,0,0.18),rgba(0,0,0,0.42));z-index:260;padding:12px}
+    .modal.show{display:flex}
+    .modal-sheet{
+      width:100%;max-width:720px;background:#fff;border-radius:16px 16px 8px 8px;padding:16px;box-shadow:0 30px 80px rgba(0,0,0,0.32);
+      transform:translateY(22px);opacity:0;animation:sheetUp .36s ease forwards;
+    }
+    @keyframes sheetUp{ to{transform:translateY(0);opacity:1} }
+
+    .modal-close{position:absolute;left:14px;top:14px;border:none;background:transparent;font-size:22px;cursor:pointer}
+
+    .note{background:#fff8e6;padding:12px;border-radius:10px;border-left:4px solid #f6a623;font-weight:700;color:#473012;line-height:1.5;text-align:center}
+
+    /* small screens tweaks */
+    @media (max-width:520px){
+      .hero .main-img{height:300px}
+      .thumbs img{height:70px}
+      .donate-pill{padding:8px}
+      .card{border-radius:14px}
     }
 
-    /* desktop adjustments */
-    @media(min-width:980px){
-      .page-wrap{padding-bottom:48px}
-      .layout{display:flex;gap:18px;align-items:flex-start}
-      .showcase{width:420px;flex:0 0 420px;margin:0}
-      .hero{height:380px}
-      .donate-inner{height:64px}
+    /* desktop: keep responsive but still mobile-first */
+    @media (min-width:980px){
+      body{padding:24px}
+      .wrap{display:flex;gap:20px;align-items:flex-start}
+      .hero{flex:0 0 420px}
+      main.card{flex:1}
+      .donate-sticky{right:28px;left:28px}
     }
   </style>
 </head>
 <body>
-  <div class="page-wrap">
-    <!-- SHOWCASE -->
-    <div class="showcase" aria-hidden="false">
-      <div class="hero" id="hero">
-        <img id="mainLeader" src="images/IMG-20251207-WA0037.jpg" alt="أحمد فتوح - الصورة المميزة">
+  <div class="wrap">
+    <!-- HERO (top) -->
+    <div style="width:100%;max-width:920px;margin:0 auto">
+      <div class="hero">
+        <img id="mainLeader" class="main-img" src="images/IMG-20251207-WA0037.jpg" alt="أحمد فتوح - الصورة المميزة">
         <div class="frame"><img id="frameImg" src="images/IMG-20251207-WA0036.jpg" alt="صورة مصغرة"></div>
       </div>
-
       <div class="thumbs" id="thumbs">
         <img class="active" src="images/IMG-20251207-WA0037.jpg" data-src="images/IMG-20251207-WA0037.jpg" alt="مصغرة 1">
         <img src="images/IMG-20251207-WA0036.jpg" data-src="images/IMG-20251207-WA0036.jpg" alt="مصغرة 2">
       </div>
-
       <div class="caption">الصورة المميزة — اضغط على أي صورة لتكبيرها أو لتجربتها في الإطار.</div>
     </div>
 
-    <!-- MAIN CARD -->
-    <main class="card" role="main" aria-labelledby="mainTitle">
-      <header>
-        <h1 id="mainTitle">ساعد في زواج أحمد فتوح</h1>
-        <button class="lang-btn" id="langToggle">EN</button>
-      </header>
+    <!-- CARD content (keeps original text/content exactly) -->
+    <main class="card" style="margin-top:14px;">
+      <div class="content">
+        <header>
+          <h1>ساعد في زواج أحمد فتوح</h1>
+          <button class="lang-btn" id="langToggle">EN</button>
+        </header>
 
-      <div class="lead-text">
-        <h2>لو حابب ترسم بسمة حقيقية على وش الليدر، تقدر تساهم بأي مبلغ يناسبك وتكون شريك في فرحته.</h2>
-        <p>أحمد محتاج دعم بسيط عايز يتجوز تعب تعب الشتااااااااااااء يا ناس  ❄️
+        <section class="lead-text" aria-labelledby="lead-title">
+          <h2 id="lead-title">لو حابب ترسم بسمة حقيقية على وش الليدر، تقدر تساهم بأي مبلغ يناسبك وتكون شريك في فرحته.</h2>
+          <p>أحمد محتاج دعم بسيط عايز يتجوز تعب تعب الشتااااااااااااء يا ناس  ❄️
 الجو برد.. خلّي فرحته تدفي قلبه قبل الشتاء الجاي .</p>
+        </section>
+
+        <section class="methods" aria-label="طرق التبرع">
+          <div class="method" data-id="instapay"><img src="images/instapay.png" alt="insta"><div>إنستباي</div></div>
+          <div class="method" data-id="fawry"><img src="images/fawry.png" alt="fawry"><div>فوري</div></div>
+          <div class="method" data-id="bankmasr"><img src="images/bankmasr.png" alt="bankmasr"><div>بنك مصر</div></div>
+          <div class="method" data-id="cib"><img src="images/cib.png" alt="cib"><div>CIB</div></div>
+        </section>
+
+        <section class="about" aria-labelledby="aboutTitle">
+          <h3 id="aboutTitle">عن الحملة</h3>
+          <p>هدف الحملة تجميع دعم بسيط  عشان احمد فتوح يفرح والشتاء دا يفرح زي الناس يولاد    .</p>
+        </section>
+
+        <section class="contact" aria-labelledby="contactTitle">
+          <h3 id="contactTitle">تواصل معنا</h3>
+          <form id="contactForm">
+            <input class="input" name="name" placeholder="الاسم" required>
+            <input class="input" name="contact" placeholder="الهاتف أو الإيميل" required>
+            <textarea class="input" name="message" placeholder="رسالتك"></textarea>
+            <button class="btn-primary" type="submit">أرسل</button>
+          </form>
+        </section>
+
+        <footer style="text-align:center;color:var(--muted);font-size:13px;padding-top:8px">كل الحقوق محفوظة © soc: ahmed hossny</footer>
       </div>
-
-      <div class="methods" aria-label="طرق التبرع">
-        <button class="method-btn" data-id="instapay"><img src="images/instapay.png" alt="insta"> <span>إنستباي</span></button>
-        <button class="method-btn" data-id="fawry"><img src="images/fawry.png" alt="fawry"> <span>فوري</span></button>
-        <button class="method-btn" data-id="bankmasr"><img src="images/bankmasr.png" alt="bm"> <span>بنك مصر</span></button>
-        <button class="method-btn" data-id="cib"><img src="images/cib.png" alt="cib"> <span>CIB</span></button>
-      </div>
-
-      <section class="about" aria-labelledby="aboutTitle">
-        <h3 id="aboutTitle">عن الحملة</h3>
-        <p>هدف الحملة تجميع دعم بسيط  عشان احمد فتوح يفرح والشتاء دا يفرح زي الناس يولاد    .</p>
-      </section>
-
-      <section class="contact" aria-labelledby="contactTitle">
-        <h3 id="contactTitle">تواصل معنا</h3>
-        <form id="contactForm">
-          <input name="name" placeholder="الاسم" required>
-          <input name="contact" placeholder="الهاتف أو الإيميل" required>
-          <textarea name="message" placeholder="رسالتك"></textarea>
-          <button class="btn-send" type="submit">أرسل</button>
-        </form>
-      </section>
-
-      <footer><small>كل الحقوق محفوظة © soc: ahmed hossny</small></footer>
     </main>
   </div>
 
-  <!-- STICKY DONATE CTA -->
-  <div class="donate-bar" aria-hidden="false">
-    <div class="donate-inner" role="region" aria-label="شريط التبرع">
-      <div class="donate-title">ساعد الآن — كل جنيه بيعمل فرق</div>
+  <!-- STICKY DONATE PILL -->
+  <div class="donate-sticky" aria-hidden="false">
+    <div class="donate-pill" role="region" aria-label="شريط التبرع">
+      <div class="donate-text">ساعد الآن — كل جنيه بيعمل فرق</div>
       <button class="donate-cta" id="donateQuick">تبرع الآن</button>
     </div>
   </div>
 
   <!-- MODAL -->
   <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-card" role="document">
+    <div class="modal-sheet" role="document">
       <button class="modal-close" id="closeModal" aria-label="إغلاق">×</button>
-      <h4 id="modalTitle">تأكيد التبرع</h4>
+      <h3 style="margin-top:6px">تأكيد التبرع</h3>
       <p id="chosenText">-</p>
 
-      <div class="special-msg" id="specialMsg">
+      <div class="note" id="specialMsg">
         يخي انت قلبك سخن عايز تتبرع ع طول ع اساس لاقي تاكل شوفلة عروسة الاول🫠🌚
       </div>
 
-      <div class="modal-actions">
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
         <button class="btn" id="cancelBtn">غلق</button>
-        <button class="btn primary" id="proceedBtn">تابع التبرع</button>
+        <button class="btn" id="proceedBtn" style="background:var(--primary-2);color:#fff;border-radius:10px;padding:10px 14px;border:none;font-weight:800">تابع التبرع</button>
       </div>
     </div>
   </div>
 
   <script>
     (function(){
-      // عناصر الصفحة
-      const methods = document.querySelectorAll('.method-btn');
+      // elements
+      const thumbs = document.querySelectorAll('#thumbs img');
+      const mainLeader = document.getElementById('mainLeader');
+      const frameImg = document.getElementById('frameImg');
+      const methods = document.querySelectorAll('.method');
       const modal = document.getElementById('modal');
-      const closeModalBtn = document.getElementById('closeModal');
+      const closeModal = document.getElementById('closeModal');
       const cancelBtn = document.getElementById('cancelBtn');
       const proceedBtn = document.getElementById('proceedBtn');
       const chosenText = document.getElementById('chosenText');
       const donateQuick = document.getElementById('donateQuick');
-      const thumbs = document.querySelectorAll('#thumbs img');
-      const mainLeader = document.getElementById('mainLeader');
-      const frameImg = document.getElementById('frameImg');
-      const hero = document.getElementById('hero');
       const contactForm = document.getElementById('contactForm');
+      const hero = document.querySelector('.hero');
 
-      // فتح المودال عند اختيار وسيلة
-      methods.forEach(btn=>{
-        btn.addEventListener('click', function(){
+      // change main image on thumbnail click
+      thumbs.forEach(t=>{
+        t.addEventListener('click', function(){
+          thumbs.forEach(x=>x.classList.remove('active'));
+          this.classList.add('active');
+          const src = this.dataset.src || this.src;
+          // subtle transition
+          mainLeader.style.transition = 'opacity .18s, transform .24s';
+          mainLeader.style.opacity = '0.4';
+          mainLeader.style.transform = 'scale(.98)';
+          setTimeout(()=>{
+            mainLeader.src = src;
+            mainLeader.style.opacity = '1';
+            mainLeader.style.transform = 'scale(1.02)';
+            frameImg.src = src;
+            hero.classList.add('zoom');
+            setTimeout(()=>hero.classList.remove('zoom'),900);
+          }, 140);
+        });
+      });
+
+      // open modal when clicking a method
+      methods.forEach(m=>{
+        m.addEventListener('click', function(){
           const label = this.textContent.trim();
           chosenText.textContent = 'لقد اخترت: ' + label;
           openModal();
@@ -273,60 +294,38 @@
       function openModal(){
         modal.classList.add('show');
         modal.setAttribute('aria-hidden','false');
-        document.body.style.overflow = 'hidden'; // lock scroll
+        document.body.style.overflow = 'hidden';
       }
-      function closeModal(){
+      function closeM(){
         modal.classList.remove('show');
         modal.setAttribute('aria-hidden','true');
         document.body.style.overflow = '';
       }
 
-      closeModalBtn.addEventListener('click', closeModal);
-      cancelBtn.addEventListener('click', closeModal);
-
+      closeModal.addEventListener('click', closeM);
+      cancelBtn.addEventListener('click', closeM);
+      // proceed (demo behavior)
       proceedBtn.addEventListener('click', function(){
         alert('تم تسجيل نية التبرع — شكراً لك!');
-        closeModal();
+        closeM();
       });
 
-      // تبديل الصور مع تأثير ناعم
-      thumbs.forEach(t=>{
-        t.addEventListener('click', function(){
-          thumbs.forEach(x=>x.classList.remove('active'));
-          this.classList.add('active');
-          const src = this.dataset.src || this.src;
-          mainLeader.style.transition = 'opacity .18s, transform .28s';
-          mainLeader.style.opacity = '0.4';
-          mainLeader.style.transform = 'scale(.98)';
-          setTimeout(()=>{
-            mainLeader.src = src;
-            mainLeader.style.opacity = '1';
-            mainLeader.style.transform = 'scale(1.02)';
-            frameImg.src = src;
-            // hero zoom micro effect
-            hero.classList.add('hero-zoom');
-            setTimeout(()=> hero.classList.remove('hero-zoom'), 900);
-          }, 140);
-        });
-      });
-
-      // نموذج التواصل تجريبي
+      // contact form demo
       contactForm.addEventListener('submit', function(e){
         e.preventDefault();
         const nm = this.name.value || 'صديق';
-        alert('شكراً يا ' + nm + ' — تم إرسال رسالتك .');
+        alert('شكراً يا ' + nm + ' — تم إرسال رسالتك (تجريبي).');
         this.reset();
         window.scrollTo({top:0,behavior:'smooth'});
       });
 
-      // اغلاق المودال عند الضغط خارجًا أو بالـ Esc
-      modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
-      document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
+      // close modal on outside click / Esc
+      modal.addEventListener('click', function(e){ if(e.target === modal) closeM(); });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('show')) closeM(); });
 
-      // prefetch images لتحسين السرعة
+      // prefetch images
       const imgs = ['images/IMG-20251207-WA0037.jpg','images/IMG-20251207-WA0036.jpg','images/instapay.png','images/fawry.png','images/bankmasr.png','images/cib.png'];
       imgs.forEach(s=>{ const i = new Image(); i.src = s; });
-
     })();
   </script>
 </body>
