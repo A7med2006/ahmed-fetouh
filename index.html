@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ساعد في زواج أحمد فتوح</title>
+  <style>
+/* ----- Reset & base ----- */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  background: linear-gradient(135deg, #f5f3ff 0%, #eef7ff 50%, #fdfdfd 100%);
+  color:#0f1724;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:28px;
+  direction: rtl;
+}
+.wrap{max-width:1100px;margin:0 auto;display:flex;gap:22px;align-items:flex-start}
+/* ----- Left column (content) ----- */
+    .card{
+      flex:1;
+      background:rgba(255,255,255,0.95);
+      border-radius:14px;
+      padding:22px;
+      box-shadow:0 18px 40px rgba(12,22,36,0.06);
+      min-height:560px;
+    }
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    header h1{font-size:22px;letter-spacing:.2px}
+    .lang-btn{border:1px solid #e6e9ee;background:#fff;padding:6px 10px;border-radius:8px;cursor:pointer}
+    .lead-text h2{font-size:20px;margin-bottom:8px}
+    .lead-text p{color:#475569;margin-bottom:12px;line-height:1.5}
+    .methods{display:flex;flex-wrap:wrap;gap:10px}
+    .method-btn{
+      display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid rgba(15,23,42,0.06);
+      background:#fff;cursor:pointer;transition:transform .12s,box-shadow .12s
+    }
+    .method-btn img{width:36px;height:36px;object-fit:contain}
+    .method-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(12,22,36,0.06)}
+
+    .about{margin-top:18px;padding-top:14px;border-top:1px solid rgba(2,6,23,0.04)}
+    .about h3{font-size:16px;margin-bottom:8px}
+    .about p{color:#475569;line-height:1.5}
+
+    .contact{margin-top:18px;padding-top:14px;border-top:1px solid rgba(2,6,23,0.04)}
+    .contact form{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+    .contact input,.contact textarea{padding:10px;border-radius:8px;border:1px solid #e6e9ee;background:#fbfbfd}
+    .contact textarea{grid-column:1/ -1;min-height:90px}
+    .btn-send{grid-column:1/-1;padding:10px;border-radius:8px;border:none;background:#0ea5a3;color:#fff;cursor:pointer}
+
+    footer{margin-top:14px;text-align:center;color:#667085;font-size:13px}
+
+    /* ----- Right column (image showcase) ----- */
+    .showcase{width:420px;display:flex;flex-direction:column;gap:14px;align-items:center}
+    /* spotlight frame for the main leader image */
+    .hero-wrap{
+      width:100%;border-radius:16px;position:relative;
+      background: radial-gradient(1200px 400px at 10% 20%, rgba(14,165,163,0.06), transparent 20%),
+                  linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));
+      padding:14px;box-shadow:0 28px 60px rgba(5,20,40,0.08);backdrop-filter: blur(4px);
+    }
+    .hero{
+      border-radius:12px;overflow:hidden;position:relative;height:380px;
+      display:flex;align-items:flex-end;justify-content:flex-end;
+    }
+    .hero img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transform:scale(1.01);
+      transition:transform .6s ease;
+    }
+    /* subtle overlay gradient to emphasize face */
+    .hero::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(0,0,0,0.18) 100%);
+      pointer-events:none;
+    }
+    /* portrait frame + glowing outline */
+    .frame{
+      position:absolute;left:16px;top:16px;width:120px;height:120px;border-radius:12px;overflow:hidden;
+      box-shadow:0 8px 30px rgba(14,165,163,0.12), 0 2px 6px rgba(2,6,23,0.08);
+      border:2px solid rgba(255,255,255,0.5);
+      transform:translateY(-12px);
+    }
+    .frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* thumbnails */
+    .thumbs{display:flex;gap:10px;width:100%;margin-top:6px;justify-content:space-between}
+    .thumbs img{width:calc(50% - 5px);height:88px;object-fit:cover;border-radius:10px;border:3px solid #fff;box-shadow:0 8px 24px rgba(2,6,23,0.06);cursor:pointer;transition:transform .12s}
+    .thumbs img:hover{transform:translateY(-4px)}
+
+    /* small caption */
+    .caption{margin-top:6px;font-size:13px;color:#475569;text-align:center}
+
+    /* ----- modal ----- */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);z-index:80;padding:18px}
+    .modal.show{display:flex}
+    .modal-card{width:100%;max-width:580px;background:#fff;border-radius:12px;padding:18px;box-shadow:0 30px 60px rgba(2,6,23,0.3);position:relative}
+    .modal-close{position:absolute;left:14px;top:10px;border:none;background:transparent;font-size:22px;cursor:pointer}
+    .modal h4{font-size:18px;margin-bottom:8px}
+    .special-msg{background:#fff7ed;border-left:4px solid #f59e0b;padding:12px;border-radius:8px;font-weight:700;text-align:center;margin:12px 0}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end}
+    .btn{padding:8px 12px;border-radius:8px;border:1px solid #e6e9ee;background:#fff;cursor:pointer}
+    .btn.primary{background:#0ea5a3;color:#fff;border:none}
+
+    /* responsive */
+    @media (max-width:980px){
+      .wrap{flex-direction:column;padding-bottom:40px}
+      .showcase{width:100%}
+      .hero{height:300px}
+      .card{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- LEFT: content -->
+    <div class="card" aria-labelledby="mainTitle">
+      <header>
+        <h1 id="mainTitle">ساعد في زواج أحمد فتوح</h1>
+        <button class="lang-btn" id="langToggle">EN</button>
+      </header>
+
+      <div class="lead-text">
+        <h2>لو حابب ترسم بسمة حقيقية على وش الليدر، تقدر تساهم بأي مبلغ يناسبك وتكون شريك في فرحته.</h2>
+        <p>أحمد محتاج دعم بسيط عايز يتجوز تعب تعب الشتااااااااااااء يا ناس  ❄️
+الجو برد.. خلّي فرحته تدفي قلبه قبل الشتاء الجاي .</p>
+      </div>
+
+      <div class="methods" aria-label="طرق التبرع">
+        <button class="method-btn" data-id="instapay"><img src="images/instapay.png" alt="Instapay"> <span>إنستباي</span></button>
+        <button class="method-btn" data-id="fawry"><img src="images/fawry.png" alt="Fawry"> <span>فوري</span></button>
+        <button class="method-btn" data-id="bankmasr"><img src="images/bankmasr.png" alt="Bank Masr"> <span>بنك مصر</span></button>
+        <button class="method-btn" data-id="cib"><img src="images/cib.png" alt="CIB"> <span>بنك CIB</span></button>
+      </div>
+
+      <div class="about" aria-labelledby="aboutTitle">
+        <h3 id="aboutTitle">عن الحملة</h3>
+        <p>هدف الحملة تجميع دعم بسيط  عشان احمد فتوح يفرح والشتاء دا يفرح زي الناس يولاد    .</p>
+      </div>
+
+      <div class="contact" aria-labelledby="contactTitle">
+        <h3 id="contactTitle">تواصل معنا</h3>
+        <form id="contactForm">
+          <input name="name" placeholder="الاسم" required>
+          <input name="contact" placeholder="الهاتف أو الإيميل" required>
+          <textarea name="message" placeholder="رسالتك"></textarea>
+          <button class="btn-send" type="submit">أرسل</button>
+        </form>
+      </div>
+
+      <footer><small>كل الحقوق محفوظة © soc: ahmed hossny</small></footer>
+    </div>
+
+    <!-- RIGHT: showcase -->
+    <aside class="showcase" aria-hidden="false">
+      <div class="hero-wrap" role="img" aria-label="صورة أحمد فتوح">
+        <div class="hero" id="heroMain">
+          <!-- Main emphasized image (the one you pointed to) -->
+          <img id="mainLeader" src="images/IMG-20251207-WA0037.jpg" alt="أحمد فتوح - الصورة المميزة">
+          <!-- small portrait frame floating -->
+          <div class="frame" id="heroFrame">
+            <img src="images/IMG-20251207-WA0036.jpg" alt="صورة مصغرة">
+          </div>
+        </div>
+      </div>
+
+      <div class="thumbs" id="thumbs">
+        <img src="images/IMG-20251207-WA0037.jpg" alt="تبديل للصورة 1" data-src="images/IMG-20251207-WA0037.jpg">
+        <img src="images/IMG-20251207-WA0036.jpg" alt="تبديل للصورة 2" data-src="images/IMG-20251207-WA0036.jpg">
+      </div>
+
+      <div class="caption">الصورة المميزة — اضغط على أي صورة لتكبيرها أو لتجربتها في الإطار.</div>
+    </aside>
+  </div>
+
+  <!-- modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="إغلاق">×</button>
+      <h4 id="modalTitle">تأكيد التبرع</h4>
+      <p id="chosenText">-</p>
+
+      <div class="special-msg" id="specialMsg">
+        يخي انت قلبك سخن عايز تتبرع ع طول ع اساس لاقي تاكل شوفلة عروسة الاول🫠🌚
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn" id="cancelBtn">غلق</button>
+        <button class="btn primary" id="proceedBtn">تابع التبرع</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      // العناصر
+      const methods = document.querySelectorAll('.method-btn');
+      const modal = document.getElementById('modal');
+      const closeModal = document.getElementById('closeModal');
+      const cancelBtn = document.getElementById('cancelBtn');
+      const proceedBtn = document.getElementById('proceedBtn');
+      const chosenText = document.getElementById('chosenText');
+      const langToggle = document.getElementById('langToggle');
+      const contactForm = document.getElementById('contactForm');
+
+      // إظهار المودال عند الضغط على أي وسيلة تبرع
+      methods.forEach(btn=>{
+        btn.addEventListener('click', function(){
+          const label = this.textContent.trim();
+          chosenText.textContent = 'لقد اخترت: ' + label;
+          modal.classList.add('show');
+          modal.setAttribute('aria-hidden','false');
+        });
+      });
+
+      function hideModal(){
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden','true');
+      }
+      closeModal.addEventListener('click', hideModal);
+      cancelBtn.addEventListener('click', hideModal);
+
+      proceedBtn.addEventListener('click', function(){
+        // سلوك تجريبي — في وضع حقيقي هنا يتم توجيه المستخدم لباي لينك أو تظهر تفاصيل الحساب
+        alert('تم تسجيل نية التبرع  شكراً ليك يا اسطااااا!');
+        hideModal();
+      });
+
+      // thumbs -> تبديل الصورة الرئيسية واطلاق تأثير
+      const thumbs = document.querySelectorAll('#thumbs img');
+      const mainLeader = document.getElementById('mainLeader');
+      const heroFrameImg = document.querySelector('.frame img');
+
+      thumbs.forEach(t=>{
+        t.addEventListener('click', function(){
+          const src = this.dataset.src || this.src;
+          // تغيير الصورة الرئيسية ولإظهار تأثير ناعم
+          mainLeader.style.transform = 'scale(1.06)';
+          setTimeout(()=>{ mainLeader.src = src; mainLeader.style.transform='scale(1.0)'; }, 140);
+          // لو تحب نخلي الصورة المصغرة في الإطار تتغير أيضًا:
+          heroFrameImg.src = src === heroFrameImg.src ? 'images/IMG-20251207-WA0036.jpg' : src;
+        });
+      });
+
+      // نموذج التواصل تجريبي
+      contactForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        const nm = this.name.value || 'صديق';
+        alert('شكراً يا ' + nm + ' — تم إرسال رسالتك احمد فتوح يشكرك لاحساسك بشعورة في الشتاء .');
+        this.reset();
+      });
+
+      // تبديل لغة بسيط (العناصر الأساسية فقط)
+      let lang = 'ar';
+      langToggle.addEventListener('click', function(){
+        if(lang === 'ar'){
+          lang = 'en';
+          document.documentElement.lang = 'en';
+          document.body.dir = 'ltr';
+          document.querySelector('h1').textContent = "Help Ahmed Fotouh's Wedding";
+          document.querySelector('.lead-text h2').textContent = "Your small contribution can bring joy this winter for the leader";
+          document.querySelector('.lead-text p').textContent = "Ahmed needs your support for wedding arrangements and the bride's needs; every donation matters.";
+          document.querySelector('.about h3').textContent = "About the Campaign";
+          document.querySelector('.contact h3').textContent = "Contact";
+          this.textContent = 'عربي';
+          document.querySelector('.btn-send').textContent = 'Send';
+          document.querySelector('footer small').textContent = "All rights reserved © soc:ahmed hossny";
+          document.getElementById('specialMsg').textContent = "You warm-hearted! Wanna donate right away? Make sure the bride is taken care of first 🫠🌚";
+        } else {
+          lang = 'ar';
+          document.documentElement.lang = 'ar';
+          document.body.dir = 'rtl';
+          document.querySelector('h1').textContent = "ساعد في زواج أحمد فتوح";
+          document.querySelector('.lead-text h2').textContent = "مساهمتك البسيطة قادرة تدخل الفرحة في الشتاء لليدر";
+          document.querySelector('.lead-text p').textContent = "أحمد محتاج دعم بسيط عايز يتجوز يا ناس يا عالم الشتاء وانتو عارفينة عايز يدفي ا.";
+          document.querySelector('.about h3').textContent = "عن الحملة";
+          document.querySelector('.contact h3').textContent = "تواصل معنا";
+          this.textContent = 'EN';
+          document.querySelector('.btn-send').textContent = 'أرسل';
+          document.querySelector('footer small').textContent = "كل الحقوق محفوظة © soc:ahmed hossny";
+          document.getElementById('specialMsg').textContent = "يخي انت قلبك سخن عايز تتبرع ع طول ع اساس لاقي تاكل شوفلة عروسة الاول🫠🌚";
+        }
+      });
+
+      // تحسين صغير: اغلاق المودال لو ضغطت برا الكارد
+      modal.addEventListener('click', function(e){
+        if(e.target === modal) hideModal();
+      });
+
+    })();
+  </script>
+</body>
+</html>
