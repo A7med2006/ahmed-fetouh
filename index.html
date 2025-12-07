@@ -19,15 +19,36 @@
     html,body{height:100%}
     body{
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-      /* خلفية أزرق-أخضر شفاف فوق خلفية فاتحة */
-      background:
-        linear-gradient(135deg, rgba(11,99,255,0.06) 0%, rgba(0,185,140,0.05) 50%),
-        linear-gradient(180deg,#f6fbff 0%, #f3fff7 100%);
+      /* ===== الخلفية المتحركة (اختيار 6) - animated gradient =====
+         محفوظة لتبدو رايقة على الموبايل؛ استعملت حجم خلفية كبير للحركة الناعمة */
+      background: linear-gradient(270deg,
+        rgba(11,99,255,0.12) 0%,
+        rgba(0,200,140,0.10) 25%,
+        rgba(11,99,255,0.08) 50%,
+        rgba(0,200,140,0.06) 75%,
+        rgba(11,99,255,0.04) 100%
+      );
+      background-size: 600% 600%;
+      animation: slowGradient 16s ease infinite;
       color:#0f1724;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       padding:12px;
       direction: rtl;
+    }
+
+    /* إذا المستخدم فعّل reduced motion نوقف الحركة لأداء أفضل */
+    @media (prefers-reduced-motion: reduce) {
+      body {
+        animation: none;
+        background-size: auto;
+      }
+    }
+
+    @keyframes slowGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* اجعل هناك حشوة أسفل تحمي الحقول من التغطية */
